@@ -357,6 +357,10 @@ namespace CookingSkill
             bool consume = Mod.onCook(this.pagesOfCraftingRecipes[this.currentCraftingPage][c], obj, _materialContainers);
             SObject heldObj = this.heldItem as SObject;
             SObject itemObj = obj as SObject;
+
+            if (heldObj != null && heldObj.Quality != itemObj.Quality)
+                return;
+
             bool didCraft = false;
             /////
             Game1.player.checkForQuestComplete((NPC)null, -1, -1, obj, (string)null, 2, -1);
